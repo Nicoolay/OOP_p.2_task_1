@@ -1,6 +1,6 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
-#include <Windows.h>
+#include <windows.h>
 
 class Figure
 {
@@ -11,56 +11,38 @@ protected:
 
 public:
     Figure() : Figure(0, "Фигура: ") {}
-   
-    
-    int get_sides_count(){
-       return sides_count;
-    };
+
+    int get_sides_count() {
+        return sides_count;
+    }
 
     std::string get_name() {
         return name;
-    };
-
+    }
 };
 
-
-class Triangle : private Figure {
+class Triangle : public Figure {
 public:
-    Triangle(): Figure(3,"Треугольник: "){}
-    int get_sides_count() {
-        return Figure::get_sides_count();
-    }
-
-    std::string get_name() {
-        return Figure::get_name();
-    }
+    Triangle() : Figure(3, "Треугольник: ") {}
 };
 
-class Quadrangle : private Figure 
+class Quadrangle : public Figure
 {
 public:
-    Quadrangle(): Figure(4, "Четырёхугольник: "){}
-    int get_sides_count() {
-        return Figure::get_sides_count();
-    }
-
-    std::string get_name() {
-        return Figure::get_name();
-    }
+    Quadrangle() : Figure(4, "Четырёхугольник: ") {}
 };
 
 int main(int argc, char* argv[])
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-   
+
     Figure fig;
     Triangle trig;
     Quadrangle quad;
     std::cout << "Количество сторон: " << std::endl;
-    std::cout<< fig.get_name() << fig.get_sides_count()<< std::endl;
-    std::cout << trig.get_name() << trig.get_sides_count() << std::endl;// Вызов метода
+    std::cout << fig.get_name() << fig.get_sides_count() << std::endl;
+    std::cout << trig.get_name() << trig.get_sides_count() << std::endl;
     std::cout << quad.get_name() << quad.get_sides_count() << std::endl;
     return 0;
 }
-
